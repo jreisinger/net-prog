@@ -48,8 +48,8 @@ Perl's built-in functions
 - .. `send` and `recv` for datagram socket
 - typical SERVER: socket(), bind() and listen(); then loop in a blocking
   accept() waiting for incoming connections
-- typical CLIENT: socket() and connect() (datagram clients don't need to
-  connect(); they specify the destination an argument to send())
+- typical CLIENT: socket() and connect() // datagram clients don't need to
+  connect(); they specify the destination an argument to send()
 
 Sources
 
