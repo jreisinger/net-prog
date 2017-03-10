@@ -18,8 +18,8 @@ Domains (Protocol Families)
 1. `PF_INET` - socket is identified by host (IP address) and port
 2. `PF_UNIX` - .. by filename (ex. `/tmp/mysock`)
 
-... domains and types are identified symbolic names above (that are mapped to
-numeric constants) which are functions exported by `Socket` and `IO::Socket`
+... domains and types are identified by symbolic names above (that are mapped
+to numeric constants) which are functions exported by `Socket` and `IO::Socket`
 
 Protocols (there's rarely more than one protocol for the given domain and type
 of socket)
@@ -46,10 +46,10 @@ Perl's built-in functions
 - use `print` and `<>` or `syswrite` or `sysread` to communicate over a stream
   socket
 - .. `send` and `recv` for datagram socket
-- typical SERVER: socket, bind and listen; then loop in a blocking accept
-  waiting for incoming connections
-- typical CLIENT: socket and connect (datagram clients don't need to connect();
-  they specify the destination an argument to send())
+- typical SERVER: socket(), bind() and listen(); then loop in a blocking
+  accept() waiting for incoming connections
+- typical CLIENT: socket() and connect() (datagram clients don't need to
+  connect(); they specify the destination an argument to send())
 
 Sources
 
