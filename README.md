@@ -6,7 +6,7 @@ Sockets
 - endpoints for communication
 - allow processes to communicate on a host or over a network
 
-Socket types (`man 2 socket`)
+Socket types
 
 1. `SOCK_STREAM` - bidirectional, sequenced and reliable communication (similar
    to pipes)
