@@ -40,7 +40,7 @@ Perl's built-in functions
 - low-level direct access to every part of the system
 - on error return `undef` and set `$!`
 - `socket()` - make a socket
-- `bind()` - give a socket a local name
+- `bind()` - give a socket a local name by binding it to an address
 - `connect()` - connect a local socket to a (possibly remote) one
 - `listen()` - ready a socket for connections from other sockets
 - `accept()` - receive the connections one by one
