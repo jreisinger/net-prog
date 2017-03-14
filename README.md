@@ -54,5 +54,6 @@ Perl's built-in functions
 
 Sources
 
-- Perl Cookbook, Ch. 17 Sockets
-- Network Programming with Perl
+- The Linux Programming Interface (2010)
+- Perl Cookbook, Ch. 17 Sockets (2003)
+- Network Programming with Perl (2001)
