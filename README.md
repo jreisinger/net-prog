@@ -50,10 +50,10 @@ Perl's built-in functions
 - typical SERVER: socket(), bind() and listen(); then loop in a blocking
   accept() waiting for incoming connections
 - typical CLIENT: socket() and connect() // datagram clients don't need to
-  connect(); they specify the destination an argument to send()
+  connect(); they specify the destination as argument to send()
 
 Sources
 
-- The Linux Programming Interface (2010)
+- The Linux Programming Interface, Ch. 56-61 (2010)
 - Perl Cookbook, Ch. 17 Sockets (2003)
 - Network Programming with Perl (2001)
