@@ -18,7 +18,7 @@ Socket types
 2) `SOCK_DGRAM` - only garantee that message borders will be preserverd when read
    (but lower overhead)
 
-Domains (Protocol Families) - communication range and identification
+Domains (Protocol Families) - communication range and address format
 
 1. `PF_INET` - socket is identified by host (IP address) and port
 2. `PF_UNIX` - .. by filename (ex. `/tmp/mysock`)
