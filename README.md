@@ -31,9 +31,9 @@ of socket)
 ... protocols have names that correspond to numbers used by the OS.
 `getprotobyname()` (built into Perl) returns these numbers:
 
-    $ perl -le 'print scalar getprotobyname $_ for qw(tcp udp)'
-    6
-    17
+    $ perl -le 'print "$_ -> ", scalar getprotobyname $_ for qw(tcp udp)'
+    tcp -> 6
+    udp -> 17
 
 Perl's built-in functions
 
