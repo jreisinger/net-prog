@@ -43,7 +43,7 @@ Perl's built-in functions
 - `bind()` - give a socket a local name by binding it to an address
 - `connect()` - connect a local socket to a (possibly remote) one
 - `listen()` - ready a socket for connections from other sockets
-- `accept()` - receive the connections one by one
+- `accept()` - receive the connections one by one creating new sockets
 - use `print` and `<>` or `syswrite` or `sysread` to communicate over a stream
   socket
 - .. `send` and `recv` for datagram socket
