@@ -20,7 +20,7 @@ Domains (Protocol Families) - communication range and identification
 2. `PF_UNIX` - .. by filename (ex. `/tmp/mysock`)
 
 ... domains and types are identified by symbolic names above (that are mapped
-to numeric constants) which are functions exported by `Socket` and `IO::Socket`
+to numeric constants) which are constants exported by `Socket` and `IO::Socket`
 
 Protocols (there's rarely more than one protocol for the given domain and type
 of socket)
