@@ -9,9 +9,13 @@ Sockets
 
 Socket types
 
-1. `SOCK_STREAM` - bidirectional, sequenced and reliable communication (similar
+1) `SOCK_STREAM` - bidirectional, byte-stream and reliable communication (similar
    to pipes)
-2. `SOCK_DGRAM` - only garantee that message borders will be preserverd when read
+   
+- byte-stream = no concept of message boundaries
+- reliable = data will be either delivered exactly as transmitted or we'll get notification of a failure
+
+2) `SOCK_DGRAM` - only garantee that message borders will be preserverd when read
    (but lower overhead)
 
 Domains (Protocol Families) - communication range and identification
