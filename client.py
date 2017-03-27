@@ -1,23 +1,37 @@
 #!/usr/bin/python
-# Simple TCP client
-# Usage: $0 localhost 8080 "GET / HTTP/1.1\r\n"
 import socket
 import sys
+import argparse
 
-target_host = sys.argv[1]
-target_port = int(sys.argv[2])
-send_data   = sys.argv[3]
+parser = argparse.ArgumentParser(description='Simple network client')
+parser.add_argument('--protocol', choices=['tcp','udp'], default='tcp',
+                    help='L4 protocol (default: %(default)s)')
+parser.add_argument('--host', required=True)
+parser.add_argument('--port', required=True)
+parser.add_argument('--message', default='GET / HTTP/1.1\r\n',
+                    help='data to send (default: %(default)s)')
+args = parser.parse_args()
 
 # create a socket object
-client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+if args.protocol == 'tcp':
+    client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+else:
+    client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 # connect the client
-client.connect((target_host, target_port))
+if args.protocol == 'tcp':
+    client.connect((args.host, int(args.port)))
 
 # send some data
-client.send(send_data)
+if args.protocol == 'tcp':
+    client.send(args.message)
+else:
+    client.sendto(args.message,(args.host, int(args.port)))
 
 # receive some data
-response = client.recv(4096)
+if args.protocol == 'tcp':
+    response = client.recv(4096)
+else:
+    response, addr = client.recvfrom(4096)
 
 print response
