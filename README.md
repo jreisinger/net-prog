@@ -62,3 +62,4 @@ Sources
 - The Linux Programming Interface, Ch. 56-61 (2010)
 - Perl Cookbook, Ch. 17 Sockets (2003)
 - Network Programming with Perl (2001)
+- Black Hat Python (2014)
