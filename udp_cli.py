@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # Simple UDP client - Black Hat Python, Ch. 2
+# Usage: udp_cli.py HOST PORT
 
 import sys
 import socket
