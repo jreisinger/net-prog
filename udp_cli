@@ -1,0 +1,19 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+
+use IO::Socket;
+
+die "Usage: $0 HOSTNAME PORTNO MSG\n" unless @ARGV == 3;
+
+my ( $hostname, $portno, $msg ) = @ARGV;
+
+# Setup a socket handle
+my $handle = IO::Socket::INET->new( Proto => 'udp' )
+    or die "socket: $@";    # socket() uses $! instead of $@
+
+# Send a message
+my $ipaddr = inet_aton($hostname);
+my $portaddr = sockaddr_in( $portno, $ipaddr );
+send( $handle, $msg, 0, $portaddr ) == length($msg)
+    or die "cannot send to $hostname($portno): $!";
