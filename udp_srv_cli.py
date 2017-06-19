@@ -6,6 +6,7 @@
 import argparse, socket
 from datetime import datetime
 
+# The greatest length that a UDP datagram can have
 MAX_BYTES = 65535
 
 def server(port):
@@ -13,7 +14,9 @@ def server(port):
     sock.bind(( '127.0.0.1', port ))
     print( 'Listening at {}'.format(sock.getsockname()) )
     while True:
+	# recvfrom() waits forever until a client sends a message
         data, address = sock.recvfrom(MAX_BYTES)
+	# convert bytes to string
         text = data.decode('ascii')
         print( 'The client at {} says {!r}'.format(address, text) )
         text = 'Your data was {} bytes long'.format(len(data))
@@ -24,6 +27,7 @@ def client(port):
     sock = socket.socket( socket.AF_INET, socket.SOCK_DGRAM )
     text = 'The time is {}'.format( datetime.now() )
     data = text.encode('ascii')
+    # send data to address - that's it!
     sock.sendto( data, ('127.0.0.1', port) )
     print( 'The OS assgigned me the address {}'.format( sock.getsockname() ) )
     data, address = sock.recvfrom(MAX_BYTES)  # Danger!
