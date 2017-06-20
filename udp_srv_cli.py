@@ -30,7 +30,9 @@ def client(port):
     # send data to address - that's it!
     sock.sendto( data, ('127.0.0.1', port) )
     print( 'The OS assgigned me the address {}'.format( sock.getsockname() ) )
-    data, address = sock.recvfrom(MAX_BYTES) # Danger! Is 'address' our server?
+    # Danger! 'Promiscuous client' - accepts every packet it sees, no address
+    # verification ...
+    data, address = sock.recvfrom(MAX_BYTES)
     text = data.decode('ascii')
     print( 'The server {} replied {!r}'.format(address, text) )
 
