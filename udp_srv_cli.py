@@ -11,7 +11,8 @@ MAX_BYTES = 65535
 
 def server(port):
     sock = socket.socket( socket.AF_INET, socket.SOCK_DGRAM )
-    sock.bind(( '127.0.0.1', port ))  # '' defaults to 0.0.0.0
+    # '' defaults to 0.0.0.0 (wildcard address)
+    sock.bind(( '127.0.0.1', port ))
     print( 'Listening at {}'.format(sock.getsockname()) )
     while True:
 	# recvfrom() waits forever until a client sends a message
