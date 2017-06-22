@@ -57,6 +57,10 @@ Perl's built-in functions
 - typical CLIENT: socket() and connect() // datagram clients don't need to
   connect(); they specify the destination as argument to send()
 
+UDP client `bind()` vs `connect()`
+* bind() - grab a particular port
+* connect() - limit received replies so they come only from a particular server
+
 Sources
 
 - Foundation of Python Network Programming (2014)
