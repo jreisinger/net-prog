@@ -15,9 +15,9 @@ def server(port):
     sock.bind(( '127.0.0.1', port ))
     print( 'Listening at {}'.format(sock.getsockname()) )
     while True:
-	# recvfrom() waits forever until a client sends a message
+        # recvfrom() waits forever until a client sends a message
         data, address = sock.recvfrom(MAX_BYTES)
-	# convert bytes to string
+        # convert bytes to string
         text = data.decode('ascii')
         print( 'The client at {} says {!r}'.format(address, text) )
         text = 'Your data was {} bytes long'.format(len(data))
