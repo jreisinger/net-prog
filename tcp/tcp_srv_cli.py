@@ -6,6 +6,10 @@
 import argparse, socket
 
 def recvall(sock, length):
+    """
+    We need this when the outgoing buffers of the local networking stack are
+    almost full, but not quite, and so only part of the data gets queued.
+    """
     data = b''
     while len(data) < length:
         more = sock.recv(length - len(data))
@@ -21,6 +25,7 @@ def client(host, port):
     sock.connect((host, port))
     print('client has been assigned socket name', sock.getsockname()) 
     sock.sendall(b'Hi, there server')
+    # Unfortunately there's no recvall() in the Standard Library
     reply = recvall(sock, 16)
     print('the server said', repr(reply))
     sock.close
@@ -28,16 +33,21 @@ def client(host, port):
 def server(interface, port):
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    # This tuple identifies *passive* (listening) socket
-    sock.bind((interface, port))
-    sock.listen(1)
+    # This tuple identifies *passive* (listening) socket. (Even clients can do
+    # bind() to claim a particular port.)
+    sock.bind((interface, port)) 
+    # From now on the socket can never receive any data only listen for
+    # connections and receive them via accept() method.
+    sock.listen(1) # max 1 waiting connection
     print('listening at', sock.getsockname())
     while True:
         sc, sockname = sock.accept()
         print('\nwe have accepted connection from ', sockname)
 
-        # This four-tuple identifies *active* socket
+        # This four-tuple identifies *active* (connected) socket. It represents
+        # a conversation with a particular client.
         print('  socket name: ', sc.getsockname())
+        # same as sockname - 2nd arg from accept()
         print('  socket peer: ', sc.getpeername())
 
         message = recvall(sc, 16)
