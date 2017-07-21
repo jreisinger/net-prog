@@ -8,7 +8,7 @@ All the app sees is a stream of data; the actual packets and sequence numbers ar
 
 TCP provides reliability via:
 - sequence numbers (retransmission, reordering): the initial is chosen randomly, icremented by the number of transmitted bytes
-- window (flow control) - the amount of data the sender is willing to have on the wire at any given moment
+- window (flow control, splitting data) - the amount of data the sender is willing to have on the wire at any given moment
 
 TCP connection setup:
 1. SYN: "I wanna talk, here's my initial sequence number"
@@ -48,3 +48,17 @@ When you perform `send()`, your OS's net stack will face one of:
 Because of the (c) you have to check the return value of `send()` or use `sendall()` (there's no `recvall()`).
 
 Typical TCP stacks use **buffers** - both so that they have somewhere to place incoming packet data until an application is ready to read it and so that they can collect outgoing data until the network hardware is ready to transmit an outgoing packet.
+
+Half-open connections
+---------------------
+
+- socket returns empty string when it gets closed (analogical to `read(file)`
+  when there's no more data in the file)
+
+`shutdown()` can have these arguments:
+
+- `SHUT_WR` - caller will be writing no more data, callie gets end-of-file
+- `SHUT_RD` - turn off incoming socket stream
+- `SHUT_RDWR` - similar to `close()` but will disable the socket for all
+  processes using it
+
