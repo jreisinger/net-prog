@@ -33,12 +33,15 @@ def client(host, port):
 def server(interface, port):
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+
     # This tuple identifies *passive* (listening) socket. (Even clients can do
     # bind() to claim a particular port.)
     sock.bind((interface, port)) 
+
     # From now on the socket can never receive any data only listen for
     # connections and receive them via accept() method.
     sock.listen(1) # max 1 waiting connection
+
     print('listening at', sock.getsockname())
     while True:
         sc, sockname = sock.accept()
