@@ -2,6 +2,9 @@
 # Foundations of Python Network Programming, Third Edition
 # https://github.com/brandon-rhodes/fopnp/blob/m/py3/chapter05/streamer.py
 # Client that sends data then closes the socket, not expecting a reply.
+# 
+# This is an extremely simple network protocol that involve only the delivery
+# of data.
 
 import socket
 from argparse import ArgumentParser
