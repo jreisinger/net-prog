@@ -63,7 +63,7 @@ UDP client `bind()` vs `connect()`
 
 Sources
 
-- Foundation of Python Network Programming (2014)
+- [Foundation of Python Network Programming](https://github.com/brandon-rhodes/fopnp) (2014)
 - Black Hat Python (2014)
 - The Linux Programming Interface, Ch. 56-61 (2010)
 - Perl Cookbook, Ch. 17 Sockets (2003)
