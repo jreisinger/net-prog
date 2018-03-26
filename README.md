@@ -12,7 +12,7 @@ Socket types
 1) `SOCK_STREAM` - bidirectional, connection-oriented, byte-stream and reliable communication (similar
    to pipes)
 
-- bidirectional = full duplex
+- bidirectional -> full duplex (*simultaneous* communication in both directions)
 - connection-oriented = like a phone call
 - byte-stream = no concept of message boundaries
 - reliable = data will be either delivered exactly as transmitted or we'll get notification of a failure
