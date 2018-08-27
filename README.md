@@ -1,3 +1,5 @@
+See https://jreisinger.github.io/notes/posts/net-prog/
+
 Network Programming
 ===================
 
